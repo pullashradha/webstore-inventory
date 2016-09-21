@@ -210,8 +210,10 @@
 C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Program.cs
 C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Startup.cs
 C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Controllers\HomeController.cs
-C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Migrations\20160921183038_Database.cs
-C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Migrations\20160921183038_Database.Designer.cs
+C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Migrations\20160921184721_WebStoreInventoryDB.cs
+C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Migrations\20160921184721_WebStoreInventoryDB.Designer.cs
+C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Migrations\20160921185151_ApplicationProduct.cs
+C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Migrations\20160921185151_ApplicationProduct.Designer.cs
 C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Models\ApplicationDbContext.cs
 C:\Users\epicodus\Desktop\WebStoreInventory\src\WebStoreInventory\Models\ApplicationProduct.cs

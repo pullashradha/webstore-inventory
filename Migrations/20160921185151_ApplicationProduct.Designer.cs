@@ -8,8 +8,8 @@ using WebStoreInventory.Models;
 namespace WebStoreInventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160921183038_Database")]
-    partial class Database
+    [Migration("20160921185151_ApplicationProduct")]
+    partial class ApplicationProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,11 +22,11 @@ namespace WebStoreInventory.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("InitialQuantity");
+
                     b.Property<string>("Name");
 
                     b.Property<int>("Price");
-
-                    b.Property<int>("Quantity");
 
                     b.HasKey("Id");
 
@@ -35,14 +35,11 @@ namespace WebStoreInventory.Migrations
 
             modelBuilder.Entity("WebStoreInventory.Models.ApplicationProductItem", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<bool>("Sold");
 
                     b.Property<int?>("ProductId");
 
-                    b.Property<bool>("Sold");
-
-                    b.HasKey("Id");
+                    b.HasKey("Sold");
 
                     b.HasIndex("ProductId");
 

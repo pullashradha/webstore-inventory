@@ -14,13 +14,13 @@ namespace WebStoreInventory.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Quantity { get; set; }
+        public int InitialQuantity { get; set; }
         public int Price { get; set; }
 
-        public ApplicationProduct(string name, int quantity, int price, int id = 0)
+        public ApplicationProduct(string name, int initialQuantity, int price, int id = 0)
         {
             Name = name;
-            Quantity = quantity;
+            InitialQuantity = initialQuantity;
             Price = price;
             Id = id;
         }

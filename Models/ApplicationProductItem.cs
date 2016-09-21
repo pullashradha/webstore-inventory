@@ -12,16 +12,14 @@ namespace WebStoreInventory.Models
     public class ApplicationProductItem
     {
         [Key]
-        public int Id { get; set; }
         public bool Sold { get; set; }
 
         public virtual ApplicationProduct Product { get; set; }
 
-        public ApplicationProductItem(bool sold, ApplicationProduct product, int id = 0)
+        public ApplicationProductItem(ApplicationProduct product, bool sold = false)
         {
-            Sold = sold;
             Product = product;
-            Id = id;
+            Sold = sold;
         }
 
         public ApplicationProductItem() { }

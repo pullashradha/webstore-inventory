@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WebStoreInventory.Migrations
 {
-    public partial class Database : Migration
+    public partial class WebStoreInventoryDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,14 +28,12 @@ namespace WebStoreInventory.Migrations
                 name: "Inventory",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ProductId = table.Column<int>(nullable: true),
-                    Sold = table.Column<bool>(nullable: false)
+                    Sold = table.Column<bool>(nullable: false),
+                    ProductId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Inventory", x => x.Id);
+                    table.PrimaryKey("PK_Inventory", x => x.Sold);
                     table.ForeignKey(
                         name: "FK_Inventory_Products_ProductId",
                         column: x => x.ProductId,

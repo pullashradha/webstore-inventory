@@ -8,9 +8,10 @@ using WebStoreInventory.Models;
 namespace WebStoreInventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160921184721_WebStoreInventoryDB")]
+    partial class WebStoreInventoryDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -21,11 +22,11 @@ namespace WebStoreInventory.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("InitialQuantity");
-
                     b.Property<string>("Name");
 
                     b.Property<int>("Price");
+
+                    b.Property<int>("Quantity");
 
                     b.HasKey("Id");
 
