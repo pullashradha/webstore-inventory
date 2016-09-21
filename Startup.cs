@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using WebStoreInventory.Models;
+using WebStoreInventory.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebStoreInventory

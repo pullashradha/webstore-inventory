@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebStoreInventory.Models;
 using Microsoft.AspNetCore.Mvc;
+using WebStoreInventory.ViewModels;
 
 namespace WebStoreInventory.Controllers
 {
