@@ -41,6 +41,11 @@ namespace WebStoreInventory
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
+            //Establish ApplicationDbContext to database
+            services.AddEntityFramework()
+                .AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

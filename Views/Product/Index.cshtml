@@ -1,0 +1,8 @@
+﻿@model IEnumerable<WebStoreInventory.Models.ApplicationProduct>
+
+<h1>All Products(Shoes)</h1>
+
+@foreach (var product in Model)
+{
+    <h3>@product.Name = $@product.Price</h3>
+}
