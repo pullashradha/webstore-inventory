@@ -11,6 +11,11 @@ namespace WebStoreInventory.Models
 		public DbSet<ApplicationProduct> Products { get; set; }
 
         public DbSet<ApplicationProductItem> Inventory { get; set; }
+
+        public DbSet<ApplicationOrderItem> OrderItems { get; set; }
+
+        public DbSet<ApplicationOrder> Orders { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=WebStoreInventory;integrated security=True");

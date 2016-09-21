@@ -8,9 +8,10 @@ using WebStoreInventory.Models;
 namespace WebStoreInventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160921220505_Orders-OrderItems")]
+    partial class OrdersOrderItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -31,15 +32,15 @@ namespace WebStoreInventory.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("OrderId");
+                    b.Property<int?>("ApplicationOrderId");
 
-                    b.Property<int?>("ProductId");
+                    b.Property<int?>("ProductIdId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("ApplicationOrderId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductIdId");
 
                     b.ToTable("OrderItems");
                 });
@@ -64,13 +65,13 @@ namespace WebStoreInventory.Migrations
                 {
                     b.Property<bool>("Sold");
 
-                    b.Property<int?>("OrderItemId");
+                    b.Property<int?>("ApplicationOrderItemId");
 
                     b.Property<int?>("ProductId");
 
                     b.HasKey("Sold");
 
-                    b.HasIndex("OrderItemId");
+                    b.HasIndex("ApplicationOrderItemId");
 
                     b.HasIndex("ProductId");
 
@@ -79,20 +80,20 @@ namespace WebStoreInventory.Migrations
 
             modelBuilder.Entity("WebStoreInventory.Models.ApplicationOrderItem", b =>
                 {
-                    b.HasOne("WebStoreInventory.Models.ApplicationOrder", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId");
+                    b.HasOne("WebStoreInventory.Models.ApplicationOrder")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ApplicationOrderId");
 
-                    b.HasOne("WebStoreInventory.Models.ApplicationProduct", "Product")
+                    b.HasOne("WebStoreInventory.Models.ApplicationProduct", "ProductId")
                         .WithMany()
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductIdId");
                 });
 
             modelBuilder.Entity("WebStoreInventory.Models.ApplicationProductItem", b =>
                 {
-                    b.HasOne("WebStoreInventory.Models.ApplicationOrderItem", "OrderItem")
-                        .WithMany()
-                        .HasForeignKey("OrderItemId");
+                    b.HasOne("WebStoreInventory.Models.ApplicationOrderItem")
+                        .WithMany("ProductItems")
+                        .HasForeignKey("ApplicationOrderItemId");
 
                     b.HasOne("WebStoreInventory.Models.ApplicationProduct", "Product")
                         .WithMany()

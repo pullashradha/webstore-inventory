@@ -1,8 +1,33 @@
 ﻿@model IEnumerable<WebStoreInventory.Models.ApplicationProduct>
 
-<h1>All Products(Shoes)</h1>
+<h1 class="page-header">Shop Here!</h1>
 
-@foreach (var product in Model)
-{
-    <h3>@product.Name = $@product.Price</h3>
-}
+<div class="products-list">
+    <h2>All Products(Shoes)</h2>
+    <br />
+
+    <div class="row">
+        <h4 class="col-xs-6"><strong>Name</strong></h4>
+        <h4 class="col-xs-2"><strong>Price</strong></h4>
+        <h4 class="col-xs-2"><strong>Initial Quantity</strong></h4>
+    </div>
+
+    @foreach (var product in Model)
+    {
+        <div class="row">
+            <h4 class="col-xs-6">@product.Name</h4>
+            <h4 class="col-xs-2">$@product.Price</h4>
+            <h4 class="col-xs-2">@product.InitialQuantity</h4>
+            <button class="btn btn-success col-xs-1">Buy</button>
+        </div>
+    }
+</div>
+
+<br />
+<hr />
+
+<div class="cart">
+    <h2>Cart</h2>
+    <div id="order-list"></div>
+    <div id="total-price"></div>
+</div>

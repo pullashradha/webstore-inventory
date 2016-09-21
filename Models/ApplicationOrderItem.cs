@@ -8,22 +8,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebStoreInventory.Models
 {
-    [Table("Inventory")]
-    public class ApplicationProductItem
+    [Table("OrderItems")]
+    public class ApplicationOrderItem
     {
         [Key]
-        public bool Sold { get; set; }
+        public int Id { get; set; }
+
+        //public List<ApplicationProductItem> ProductItems { get; set; }
 
         public virtual ApplicationProduct Product { get; set; }
 
-        public virtual ApplicationOrderItem OrderItem { get; set; }
+        public virtual ApplicationOrder Order { get; set; }
 
-        public ApplicationProductItem(ApplicationProduct product, bool sold = false)
+        public ApplicationOrderItem(ApplicationProduct product, int id = 0)
         {
             Product = product;
-            Sold = sold;
+            Id = id;
         }
 
-        public ApplicationProductItem() { }
+        public ApplicationOrderItem() { }
     }
 }
