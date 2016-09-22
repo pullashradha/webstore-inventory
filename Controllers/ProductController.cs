@@ -23,15 +23,17 @@ namespace WebStoreInventory.Controllers
             return View(productsList);
         }
 
-        public IActionResult Cart()
+        public IActionResult Cart(ProductViewModel viewModel)
         {
-            return View();
+            return View(viewModel);
         }
 
         [HttpPost]
         public IActionResult AddToCart(int productId)
         {
+            var product = _db.Products.FirstOrDefault(p => p.Id == productId);
             var productItem = _db.Inventory.FirstOrDefault(pi => pi.Sold == false && pi.Product.Id == productId);
+            productItem.Product = product;
             var newOrder = new ApplicationOrder();
             _db.Orders.Add(newOrder);
 
@@ -42,7 +44,7 @@ namespace WebStoreInventory.Controllers
             _db.Entry(productItem).State = EntityState.Modified;
             _db.SaveChanges();
             var viewModel = new ProductViewModel { Name = productItem.Product.Name, InitialQuantity = productItem.Product.InitialQuantity, Price = productItem.Product.Price };
-            return View(viewModel);
+            return RedirectToAction("Cart", viewModel);
         }
     }
 }
