@@ -8,9 +8,10 @@ using WebStoreInventory.Models;
 namespace WebStoreInventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160922162742_DeleteInventoryTable")]
+    partial class DeleteInventoryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -60,42 +61,11 @@ namespace WebStoreInventory.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("WebStoreInventory.Models.ApplicationProductItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("OrderItemId");
-
-                    b.Property<int?>("ProductId");
-
-                    b.Property<bool>("Sold");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderItemId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Inventory");
-                });
-
             modelBuilder.Entity("WebStoreInventory.Models.ApplicationOrderItem", b =>
                 {
                     b.HasOne("WebStoreInventory.Models.ApplicationOrder", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId");
-
-                    b.HasOne("WebStoreInventory.Models.ApplicationProduct", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("WebStoreInventory.Models.ApplicationProductItem", b =>
-                {
-                    b.HasOne("WebStoreInventory.Models.ApplicationOrderItem", "OrderItem")
-                        .WithMany()
-                        .HasForeignKey("OrderItemId");
 
                     b.HasOne("WebStoreInventory.Models.ApplicationProduct", "Product")
                         .WithMany()

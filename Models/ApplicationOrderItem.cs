@@ -14,15 +14,14 @@ namespace WebStoreInventory.Models
         [Key]
         public int Id { get; set; }
 
-        //public List<ApplicationProductItem> ProductItems { get; set; }
-
         public virtual ApplicationProduct Product { get; set; }
 
         public virtual ApplicationOrder Order { get; set; }
 
-        public ApplicationOrderItem(ApplicationProduct product, int id = 0)
+        public ApplicationOrderItem(ApplicationProduct productId, ApplicationOrder orderId, int id = 0)
         {
-            Product = product;
+            Product = productId;
+            Order = orderId;
             Id = id;
         }
 

@@ -14,8 +14,6 @@ namespace WebStoreInventory.Models
         [Key]
         public int Id { get; set; }
 
-        //public virtual ICollection<ApplicationOrderItem> OrderItems { get; set; }
-
         public ApplicationOrder(int id = 0)
         {
             Id = id;

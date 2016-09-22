@@ -1,39 +1,62 @@
 ﻿@model IEnumerable<WebStoreInventory.Models.ApplicationProduct>
 
-<h1 class="page-header">Shop Here!</h1>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-<div class="products-list">
-    <h2>All Products(Shoes)</h2>
-    <br />
+        <script>
+            $(document).ready(function () {
+                $("#add-to-cart").submit(function (event) {
+                    event.preventDefault();
+                    console.log($("#product-id").val());
+                    $.ajax ({
+                        type: "POST",
+                        dataType: "html",
+                        url: '@Url.Action("AddToCart")',
+                        success: function (result) {
+                            console.log(result);
+                            $("#order-list").html(result);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1 class="page-header">Shop Here!</h1>
 
-    <div class="row">
-        <h4 class="col-xs-6"><strong>Name</strong></h4>
-        <h4 class="col-xs-2"><strong>Price</strong></h4>
-        <h4 class="col-xs-2"><strong>Initial Quantity</strong></h4>
-    </div>
+        <div class="products-list">
+            <h2>All Products(Shoes)</h2>
+            <br />
 
-    @foreach (var product in Model)
-    {
-        <div class="row">
-            <h4 class="col-xs-6">@product.Name</h4>
-            <h4 class="col-xs-2">$@product.Price</h4>
-            <h4 class="col-xs-2">@product.InitialQuantity</h4>
-            @using (Html.BeginForm("Cart", "Product", FormMethod.Post))
+            <div class="row">
+                <h4 class="col-xs-6"><strong>Name</strong></h4>
+                <h4 class="col-xs-2"><strong>Price</strong></h4>
+                <h4 class="col-xs-2"><strong>Initial Quantity</strong></h4>
+            </div>
+
+            @foreach (var product in Model)
             {
-                <form class="col-xs-1">
-                    <input value=@product.Id name=@product.Id type="hidden" />
-                    <button class="btn btn-success" value="BuyProduct">Buy</button>
-                </form>
+                <div class="row">
+                    <h4 class="col-xs-6">@product.Name</h4>
+                    <h4 class="col-xs-2">$@product.Price</h4>
+                    <h4 class="col-xs-2">@product.InitialQuantity</h4>
+
+                    <form class="col-xs-1" method="post" id="add-to-cart">
+                        <input value=@product.Id name="productId" type="hidden" id="product-id" />
+                        <button class="btn btn-success" type="submit">Add To Cart</button>
+                    </form>
+                </div>
             }
         </div>
-    }
-</div>
 
-<br />
-<hr />
+        <br />
+        <hr />
 
-<div class="cart">
-    <h2>Cart</h2>
-    <div id="order-list"></div>
-    <div id="total-price"></div>
-</div>
+        <div class="cart">
+            <h2>Cart</h2>
+            <div id="order-list"></div>
+            <div id="total-price"></div>
+        </div>
+    </body>
+</html>
